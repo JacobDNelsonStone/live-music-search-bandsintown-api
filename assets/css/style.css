@@ -1,0 +1,50 @@
+* {
+    margin:0;
+}
+:root {
+    --black:#000000;
+    --blue:#0000FF;
+}
+header {
+    background-color:lightblue;
+    padding:1rem;
+    border-bottom:2px solid var(--black);
+    margin-bottom:30px;
+
+}
+.searchContainer {
+    border: 2px solid var(--black);
+    padding:3rem;
+    max-width:1000px;
+    border-radius:10px;
+}
+
+.textContainer {
+    border: 2px solid var(--black);
+    padding:10px;
+    border-radius:10px;
+    background-color:red;
+    max-width:800px;
+    
+}
+input {
+    min-width:700px;
+    margin: 20px;
+}
+button {
+    background:var(--blue);
+    padding:2rem 4rem;
+    margin-top:30px;
+    font-size: 30px;
+    border-radius:10px;
+
+}
+.popularArtistContainer {
+    border:2px solid var(--black);
+    max-width: 500px;
+    margin-top:30px;
+    border-radius:10px;
+}
+h3 {
+    padding:20px;
+}
