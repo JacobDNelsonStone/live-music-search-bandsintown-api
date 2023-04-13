@@ -1,4 +1,12 @@
-.logo{
-  height: 100px;
-  width: 100px;
+body {
+  background-color: #262A56;
+}
+.container-header {
+display: flex;
+flex-direction: row;
+align-items: center;
+background-color: #B8621B;
+};
+.header{
+
 }

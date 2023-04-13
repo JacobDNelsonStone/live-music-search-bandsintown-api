@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/search-results.css">
-    <title>Live Music Event Search Engine powered by Bandsintown API</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Live Event Search Engine powered by Google</title>
 </head>
+
 <body>
-    <header class="header">
-        <img class= logo src="./assets/images/logo.png" alt="logo of LE with a circle around it"/>
-        <h1>Live Events Search</h1>
-        <h2>powered by Google</h2>
+    <div class="container-header">
+        <header>
+            <div class="header">
+                <img class=logo src="./assets/images/logo-small.png" alt="logo of LE with a circle around it" />
+                <h1 class="header">Live Events Search</h1>
+                <h2>powered by Google</h2>
+            </div>
+        </header>
+    </div>
 
-
-    </header>
+    <main>
+        <div class="main">
+            <div class="card">
+                <div class="search-info">
+                    <h3>Search Information</h3>
+                </div>
+                <div class="card">
+                    <div class="saved">
+                        <h3>Saved Events</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="search-results">
+                        <h3>Search Results</h3>
+                    </div>
+                </div>
+            </div>
+    </main>
 </body>
+<script src="./assets/js/search-results.js"></script>
+
 </html>
