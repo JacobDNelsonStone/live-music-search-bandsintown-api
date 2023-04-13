@@ -1,14 +1,37 @@
-let textbox = document.getElementById("text");
 
-fetch(`https://serpapi.com/search?engine=google_events&q=minneapolis&apikey=ea1bb92f63fb6cd08bc63ef2a893d78f950f7d6fc900f274632b905582d14a03`)
-.then(response=>response.json())
-.then(data=>{
-let info = data
-console.log(info)
-for(let i=0; i<5; i++)
-{
-    console.log(info[i]);
-    // console.log(info.list[i].main.temp)
-    // console.log(info.list[i].weather[0].description)
+
+var searchButton = document.querySelector('#searchbutton');
+
+
+function searchFieldSubmission(){
+
+    var searchQuery = document.querySelector('#searchField').value;
+    var timingQuery = document.querySelector('#eventTiming').value;
+
+    if(!searchQuery && !timingQuery) {
+        alert("You have to enter a search query.");
+        location.reload()
+    } else if ( !timingQuery ) {
+
+    var searchURLParams = './search-results.html/q=' + searchQuery;
+    
+    location.assign(searchURLParams); 
+    } else {
+        var searchURLParams = './search-results.html/q=' + searchQuery + '&timeframe=' + timingQuery;
+    console.log(searchURLParams);
+    console.log(searchURLParams);
+    console.log(searchQuery);
+    console.log(timingQuery);
+    //location.assign(searchURLParams);
+    }
 }
-});
+
+searchButton.addEventListener('click', function(event){
+    console.log(event.target)
+
+    searchFieldSubmission();
+})
+
+
+// potential API Call for national events or something funnier
+
