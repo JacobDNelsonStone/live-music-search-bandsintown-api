@@ -3,20 +3,31 @@
 }
 :root {
     --black:#000000;
-    --blue:#0000FF;
+    --blue:#262A56;
+    --brown:#B8621B;
+    --biege:#E3CCAE;
+    --hover:#616599;
+    --white:#ffffff;
+}
+body {
+    background-color:var(--biege);
 }
 header {
-    background-color:lightblue;
+    background-color:var(--blue);
     padding:1rem;
     border-bottom:2px solid var(--black);
     margin-bottom:30px;
+    color:var(--brown);
 
 }
 .searchContainer {
     border: 2px solid var(--black);
     padding:3rem;
     max-width:1000px;
-    border-radius:10px;
+    border-radius:30px;
+    background-color:#ffffff;
+    /* left:1rem;
+    right:1rem; */
 }
 
 .textContainer {
@@ -30,20 +41,26 @@ header {
 input {
     min-width:700px;
     margin: 20px;
+    font-size: 1.5rem;
 }
 button {
     background:var(--blue);
-    padding:2rem 4rem;
+    padding:1.75rem 4rem;
     margin-top:30px;
     font-size: 30px;
     border-radius:10px;
 
+}
+button:hover{
+    background-color: var(--hover);
+    /* font-weight: 600; */
 }
 .popularArtistContainer {
     border:2px solid var(--black);
     max-width: 500px;
     margin-top:30px;
     border-radius:10px;
+    background-color: var(--white);
 }
 h3 {
     padding:20px;
