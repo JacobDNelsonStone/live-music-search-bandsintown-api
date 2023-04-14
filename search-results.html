@@ -17,11 +17,12 @@
     <div class="container-header">
         <header>
             <div class="header">
-            <div>
-            <img class=logo src="./assets/images/logo-small.png" alt="logo of LE with a circle around it" />
-            </div>
-                <h1 class="header">Live Events Search</h1>
-                <h2>powered by Google</h2>
+                <div>
+                    <img class=logo src="./assets/images/logo-small.png" alt="logo of LE with a circle around it" />
+                </div>
+                <h1>Live Events Search</h1>
+                
+                <h3>powered by Google</h3>
             </div>
         </header>
     </div>
@@ -30,20 +31,24 @@
         <div class="main">
             <div class="column-card">
                 <div class="card">
-                    <div class="search-info">
+                    <div id="search-info">
                         <h3>Search Information</h3>
+                        <h3>Your Search: </h3>
+                        <h3>Search Time Frame: </h3>
                         <button class="btn" href="./main-page.html">New Search</button>
                     </div>
                 </div>
                 <div class="card">
                     <div class="saved">
                         <h3>Saved Events</h3>
+                        <div id="saved-event-cards"></div>
                     </div>
                 </div>
             </div>
             <div class="card">
                 <div class="search-results">
                     <h3>Search Results</h3>
+                   <div id="search-result-cards"></div>
                 </div>
             
             </div>
