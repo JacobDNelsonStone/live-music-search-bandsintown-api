@@ -8,8 +8,6 @@ console.log(qParam);
 if(qParam){
   // CODE GOES HERE
 
-  // Make API call
-
   var url = new URL("https://app.ticketmaster.com/discovery/v2/events.json");
   console.log(url.href);
   url.searchParams.set("apikey", apiKey);
@@ -38,6 +36,7 @@ if(qParam){
 
   // Parse result
   function parseEvent(event) {
+    console.log("===============================");
     console.log("EVENT:");
     displayId(event);
     displayName(event);
