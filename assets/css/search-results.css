@@ -40,11 +40,11 @@ body {
   display: flex;
   flex-direction: row;
 
+
   /* flex-wrap:wrap; */
   gap: 5px;
   min-height: 200px;
   height: fit-content;
- 
 
 }
 .card{
@@ -52,9 +52,11 @@ body {
   border-radius:10px;
   padding: 5px;
 
+
   width:90%;
   background-color: #262A56;
   min-height: 200px;
+
 } 
 .column-card {
   flex-direction: column;
@@ -66,7 +68,9 @@ body {
   border: 5px solid black;
   padding: 5px;
   border-radius: 10px;
+
   background-color: #E3CCAE; 
+
 }
 .btn {
   background-color:#262A56;
@@ -95,6 +99,7 @@ button:hover{
   background-color: var(--biege);
   flex-grow: 2;
 }
+
 footer {
   /* background-color:var(--brown); */
   margin:25px 0px 0px 0px;
@@ -110,6 +115,7 @@ footer {
 footer h3 {
   font-size: 1.5rem;
 }
+
 
 
 @media screen and (max-width: 550px) {
