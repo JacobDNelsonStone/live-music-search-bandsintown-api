@@ -27,9 +27,8 @@ if(qParam){
       console.log(locRes["_embedded"]["events"]);
       var events= locRes["_embedded"]["events"];
       for(i=0;i<events.length;i++){
-        parseEvent(events[i]);
-        var searchResultCard = document.createElement('div');
-        searchResultCard.textContent = parseEvent(events[i]);
+        var searchResultCard = parseEvent(events[i]);
+
         searchResultCard.classList.add('saved');
         searchResultsContainer.append(searchResultCard);
 
@@ -45,13 +44,20 @@ if(qParam){
     console.log("===============================");
     console.log("EVENT:");
     displayId(event);
-    displayName(event);
-    displayDates(event);
-    displaySaleStatus(event);
-    displayPriceRange(event);
-    displayUrl(event);
+    // displayName(event);
+    // displayDates(event);
+    // displaySaleStatus(event);
+    // displayPriceRange(event);
+    // displayUrl(event);
     displayVenue(event["_embedded"]["venues"][0]);
-    // return event["id"]
+    var searchResultCard = document.createElement('div');
+    searchResultCard.append(displayName(event));
+    searchResultCard.append(displayDates(event));
+    searchResultCard.append(displaySaleStatus(event));
+    searchResultCard.append(displayPriceRange(event));
+    searchResultCard.append(displayUrl(event));
+    searchResultCard.append(displayVenue(event["_embedded"]["venues"][0]));
+    return searchResultCard;
   }
 
   function displayId(event) {
@@ -68,12 +74,20 @@ if(qParam){
 
   function displayDates(event) {
     console.log(event["dates"]["start"]["dateTime"]);
+    var eventDate = event["dates"]["start"]["dateTime"];
+    var eventDateEl = document.createElement('p');
+    eventDateEl.append(eventDate);
+    return eventDateEl;
   }
 
   function displaySaleStatus(event) {
     var saleStatusCode = event["dates"]["status"]["code"];
     var saleStatusIcon = saleStatusCode == "onsale" ? "✅" : "❌";
     console.log(`Sale status: ${saleStatusIcon}`);
+    var saleStatus = `Sale status: ${saleStatusIcon}`;
+    var saleStatusEl = document.createElement('p');
+    saleStatusEl.append(saleStatus);
+    return saleStatusEl;
   }
 
   function displayPriceRange(event) {
@@ -81,17 +95,30 @@ if(qParam){
     var maxPrice = event["priceRanges"][0]["max"];
     var minPrice = event["priceRanges"][0]["min"];
     console.log(`${minPrice} ${currency} - ${maxPrice} ${currency}`);
+    var priceRange = `${minPrice} ${currency} - ${maxPrice} ${currency}`;
+    var priceRangeEl = document.createElement('p');
+    priceRangeEl.append(priceRange);
+    return priceRangeEl;
   }
 
   function displayUrl(event) {
     console.log(event["url"]);
+    var eventURL = event["url"];
+    var eventURLEl = document.createElement('p');
+    eventURLEl.append(eventURL);
+    return eventURLEl;
   }
 
   function displayVenue(venue) {
     console.log("VENUE:");
     displayVenueId(venue);
-    displayVenueName(venue);
+    // displayVenueName(venue);
     displayVenueFullAddress(venue);
+    var venueInfoCard = document.createElement('div')
+    venueInfoCard.classList.add('saved')
+    venueInfoCard.append(displayVenueName(venue));
+    venueInfoCard.append(displayVenueFullAddress(venue));
+    return venueInfoCard;
   }
 
   function displayVenueId(venue) {
@@ -100,15 +127,23 @@ if(qParam){
 
   function displayVenueName(venue) {
     console.log(venue["name"]);
+    var venueName = venue["name"];
+    var venueNameEl = document.createElement('h5');
+    venueNameEl.append(venueName);
+    return venueNameEl;
   }
 
   function displayVenueFullAddress(venue) {
-    dipslayVenueAddress(venue);
+    // dipslayVenueAddress(venue);
     displayVenueCity(venue);
     displayVenueState(venue);
     displayVenuePostalCode(venue);
     displayVenueCountryCode(venue);
     displayVenueCoordinates(venue);
+    var venueAddressCard = document.createElement('div');
+    venueAddressCard.classList.add('saved');
+    venueAddressCard.append(dipslayVenueAddress(venue));
+    return venueAddressCard;
   }
 
   function dipslayVenueAddress(venue) {
@@ -116,7 +151,13 @@ if(qParam){
     if(venue["address"]["line2"]){
       console.log(venue["address"]["line2"]);
     }
-
+    var venueAddress = venue["address"]["line1"] 
+    if(venue["address"]["line2"]){
+     venueAddress += "\n" + venue["address"]["line2"];
+    }
+    var venueAddressEl = document.createElement('p');
+    venueAddressEl.append(venueAddress);
+    return venueAddressEl;
   }
 
   function displayVenueCity(venue) {
