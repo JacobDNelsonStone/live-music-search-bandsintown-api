@@ -1,19 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/search-results.css">
-    <title>Live Music Event Search Engine powered by Bandsintown API</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <title>Live Event Search Engine powered by Google</title>
 </head>
+
 <body>
-    <header class="header">
-        <img class= logo src="./assets/images/logo.png" alt="logo of LE with a circle around it"/>
-        <h1>Live Events Search</h1>
-        <h2>powered by Google</h2>
+    <div class="container-header">
+        <header>
+            <div class="header">
+                <div>
+                    <img class=logo src="./assets/images/logo-small.png" alt="logo of LE with a circle around it" />
+                </div>
+                <h1>Live Events Search</h1>
+                
+                <h3>powered by Google</h3>
+            </div>
+        </header>
+    </div>
 
+    <main>
+        <div class="main">
+            <div class="column-card">
+                <div class="card">
+                    <div id="search-info">
+                        <h3>Search Information</h3>
+                        <h3>Your Search: </h3>
+                        <h3>Search Time Frame: </h3>
+                        <button class="btn" href="./main-page.html">New Search</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="saved">
+                        <h3>Saved Events</h3>
+                        <div id="saved-event-cards"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="search-results">
+                    <h3>Search Results</h3>
+                   <div id="search-result-cards"></div>
+                </div>
+            
+            </div>
+        </div>
+            
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="./assets/js/search-results.js"></script>
 
-    </header>
+    <footer><center>
+        <div>
+            <h3><center>Check us out on Github</center></h3>
+            <div>
+                <ul>
+                    <a href="https://github.com/thinkbui">Ian Bui</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/JacobDNelsonStone">Jacob Nelson-Stone</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/potteramy">Amy Potter</a>&nbsp;&nbsp;&nbsp;
+                    <a href="">Nawal Jama</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://github.com/tyguymills">Tyler Miller</a>&nbsp;&nbsp;&nbsp;
+                </ul>
+            </div>
+        </div>
+    </center></footer>
 </body>
+
+
 </html>
