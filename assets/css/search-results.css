@@ -39,16 +39,19 @@ body {
   padding: 5px;
   display: flex;
   flex-direction: row;
+
   /* flex-wrap:wrap; */
   gap: 5px;
   min-height: 200px;
   height: fit-content;
  
+
 }
 .card{
   border: 5px solid #000000;
   border-radius:10px;
   padding: 5px;
+
   width:90%;
   background-color: #262A56;
   min-height: 200px;
@@ -58,12 +61,12 @@ body {
   width: 33%;
   flex-grow: 1;
 }
+
 .search-info {
   border: 5px solid black;
   padding: 5px;
   border-radius: 10px;
-  background-color: #E3CCAE;
-  
+  background-color: #E3CCAE; 
 }
 .btn {
   background-color:#262A56;
@@ -76,6 +79,7 @@ button:hover{
   color:#E3CCAE;
   
 }
+
 .saved {
   border: 5px solid black;
   padding: 5px;
@@ -83,12 +87,28 @@ button:hover{
   background-color: var(--biege);
   flex-grow: 1;
 }
+
 .search-results {
   border: 5px solid black;
   padding: 5px;
   border-radius: 10px;
   background-color: var(--biege);
   flex-grow: 2;
+}
+footer {
+  /* background-color:var(--brown); */
+  margin:25px 0px 0px 0px;
+  padding:2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+footer h3 {
+  font-size: 1.5rem;
 }
 
 
@@ -104,3 +124,4 @@ button:hover{
 }
 
 }
+
