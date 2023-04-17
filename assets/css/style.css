@@ -1,5 +1,5 @@
 * {
-    margin:0;
+    margin:auto;
 }
 :root {
     --black:#000000;
@@ -8,26 +8,31 @@
     --biege:#E3CCAE;
     --hover:#616599;
     --white:#ffffff;
+    --green:#367055;
 }
 body {
     background-color:var(--biege);
+    /* margin:auto; */
 }
 header {
     background-color:var(--blue);
     padding:1rem;
     border-bottom:2px solid var(--black);
-    margin-bottom:30px;
+    margin-bottom:1rem;
+    /* margin:15; */
     color:var(--brown);
-
 }
+/* header h3 {
+    padding:1rem;
+} */
 .searchContainer {
     border: 2px solid var(--black);
     padding:3rem;
     max-width:1000px;
     border-radius:30px;
     background-color:#ffffff;
-    /* left:1rem;
-    right:1rem; */
+    margin:auto;
+    width:80%;
 }
 
 .textContainer {
@@ -36,16 +41,19 @@ header {
     border-radius:10px;
     background-color:red;
     max-width:800px;
-    
+    margin:auto;
 }
 input {
-    min-width:700px;
+    /* min-width:700px; */
     margin: 20px;
     font-size: 1.5rem;
 }
+input > .textContainer {
+    
+}
 button {
     background:var(--blue);
-    padding:1.75rem 3rem;
+    padding:1.25rem 3rem;
     margin-top:30px;
     font-size: 30px;
     border-radius:10px;
@@ -62,12 +70,12 @@ button:hover{
     border-radius:10px;
     background-color: var(--white);
 }
-h3 {
+/* h3 {
     padding:20px;
-}
+} */
 footer {
     background-color:var(--brown);
-    margin:15px 0px 0px 0px;
+    /* margin:15px 0px 0px 0px; */
     padding:1rem;
     position: fixed;
     left: 0;
