@@ -13,11 +13,11 @@ function searchFieldSubmission(){
         location.reload()
     } else if ( !timingQuery ) {
 
-    var searchURLParams = './search-results.html/q=' + searchQuery;
+    var searchURLParams = './search-results.html/city=' + searchQuery;
     
     location.assign(searchURLParams); 
     } else {
-        var searchURLParams = './search-results.html/q=' + searchQuery + '&timeframe=' + timingQuery;
+        var searchURLParams = './search-results.html/city=' + searchQuery + '&timeframe=' + timingQuery;
     console.log(searchURLParams);
     console.log(searchURLParams);
     console.log(searchQuery);
