@@ -1,9 +1,7 @@
 const apiKey = "X38h4l2eRNCHRxrc62dZS33WZp8kovpQ";
 const urlParams = new URLSearchParams(window.location.search);
 const qParam = urlParams.get('city');
-// const timeframeParam = urlParams.get('timeframe');
 console.log(qParam);
-// console.log(timeframeParam);
 
 if(qParam){
   // CODE GOES HERE
@@ -14,10 +12,6 @@ if(qParam){
   console.log(url.href);
   url.searchParams.set("city", qParam);
   console.log(url.href);
-  // if(timeframeParam){
-  //   url.searchParams.set("timeframe", timeframeParam);
-  //   console.log(url.href);
-  // }
 
   // Make API call
   fetch(url.href)
