@@ -35,3 +35,4 @@ searchButton.addEventListener('click', function(event){
 
 // potential API Call for national events or something funnier
 
+
