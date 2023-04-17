@@ -3,7 +3,8 @@ const apiKey = "X38h4l2eRNCHRxrc62dZS33WZp8kovpQ";
 const urlParams = new URLSearchParams(window.location.search);
 const qParam = urlParams.get('city');
 console.log(qParam);
-
+const searchResultsContainer = document.querySelector('#searchResults');
+var searchresultCardArray = []
 
 if(qParam){
   // CODE GOES HERE
@@ -27,6 +28,11 @@ if(qParam){
       var events= locRes["_embedded"]["events"];
       for(i=0;i<events.length;i++){
         parseEvent(events[i]);
+        var searchResultCard = document.createElement('div');
+        searchResultCard.textContent = parseEvent(events[i]);
+        searchResultCard.classList.add('saved');
+        searchResultsContainer.append(searchResultCard);
+
       }
     })
     .catch(function (error) {
@@ -45,6 +51,7 @@ if(qParam){
     displayPriceRange(event);
     displayUrl(event);
     displayVenue(event["_embedded"]["venues"][0]);
+    // return event["id"]
   }
 
   function displayId(event) {
@@ -53,6 +60,10 @@ if(qParam){
 
   function displayName(event) {
     console.log(event["name"]);
+    var eventName = event['name'];
+    var eventNameEl = document.createElement('h4');
+    eventNameEl.append(eventName);
+    return eventNameEl;
   }
 
   function displayDates(event) {
@@ -105,10 +116,12 @@ if(qParam){
     if(venue["address"]["line2"]){
       console.log(venue["address"]["line2"]);
     }
+
   }
 
   function displayVenueCity(venue) {
     console.log(venue["city"]["name"]);
+    // var venueCity = venue["city"]["name"];
   }
 
   function displayVenueState(venue) {
@@ -130,6 +143,11 @@ if(qParam){
   }
 
   // Populate page
+  function renderResults(){
+    
+    
+  }
+
 } else {
   alert("You must provide a search query.");
 }
