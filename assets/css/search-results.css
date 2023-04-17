@@ -1,6 +1,4 @@
-*{
-  margin: 0;
-}
+
 :root {
   --black:#000000;
   --blue:#262A56;
@@ -20,14 +18,17 @@ body {
   border: 5px solid black;
   border-radius: 10px;
   padding: 5px;
+
 }
-header {
+.header {
   background-color:var(--blue);
   padding:1rem;
   border:5px solid var(--black);
   color:var(--biege);
   border-radius: 10px;
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
   font-family: 'Righteous', cursive;
 }
 
@@ -38,48 +39,68 @@ header {
   padding: 5px;
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
-  gap: 10px;
+  /* flex-wrap:wrap; */
+  gap: 5px;
+  min-height: 200px;
+  height: fit-content;
+ 
 }
 .card{
   border: 5px solid #000000;
   border-radius:10px;
   padding: 5px;
-  height: 80px;
-}; 
+  width:90%;
+  background-color: #262A56;
+  min-height: 200px;
+} 
 .column-card {
   flex-direction: column;
-  flex-direction: wrap;
-  /* width: 30%; */
-};
+  width: 33%;
+  flex-grow: 1;
+}
 .search-info {
   border: 5px solid black;
   padding: 5px;
   border-radius: 10px;
   background-color: #E3CCAE;
-  /* width: 30%; */
-};
+  
+}
 .btn {
   background-color:#262A56;
-  font-size: 30px;
-};
+  font-size: 20px;
+  border-radius: 10px;
+  color:#E3CCAE;
+}
 button:hover{
   background-color:#616599;
   color:#E3CCAE;
-};
+  
+}
 .saved {
   border: 5px solid black;
   padding: 5px;
   border-radius: 10px;
   background-color: var(--biege);
-  /* width: 30%; */
-};
+  flex-grow: 1;
+}
 .search-results {
   border: 5px solid black;
   padding: 5px;
   border-radius: 10px;
   background-color: var(--biege);
-  width: 60%;
   flex-grow: 2;
+}
 
-};
+
+@media screen and (max-width: 550px) {
+.main {flex-direction: column;
+}
+.card {
+  width:96%;
+}
+.column-card{
+  order: 2;
+  width:96%;
+}
+
+}
