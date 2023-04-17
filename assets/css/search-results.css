@@ -1,6 +1,4 @@
-*{
-  margin: 0;
-}
+
 :root {
   --black:#000000;
   --blue:#262A56;
@@ -43,14 +41,17 @@ body {
   flex-direction: row;
   /* flex-wrap:wrap; */
   gap: 5px;
+  min-height: 200px;
+  height: fit-content;
  
 }
 .card{
   border: 5px solid #000000;
   border-radius:10px;
   padding: 5px;
-  width:66%;
+  width:90%;
   background-color: #262A56;
+  min-height: 200px;
 } 
 .column-card {
   flex-direction: column;
@@ -90,9 +91,6 @@ button:hover{
   flex-grow: 2;
 }
 
-@media screen and (max-width: 770px){
-
-}
 
 @media screen and (max-width: 550px) {
 .main {flex-direction: column;
