@@ -1,10 +1,14 @@
+
 const apiKey = "X38h4l2eRNCHRxrc62dZS33WZp8kovpQ";
 const urlParams = new URLSearchParams(window.location.search);
 const qParam = urlParams.get('city');
 console.log(qParam);
 
+
 if(qParam){
   // CODE GOES HERE
+
+  // Make API call
 
   var url = new URL("https://app.ticketmaster.com/discovery/v2/events.json");
   console.log(url.href);
@@ -30,6 +34,7 @@ if(qParam){
     .catch(function (error) {
       console.error(error);
     });
+
 
   // Parse result
   function parseEvent(event) {

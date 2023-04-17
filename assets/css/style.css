@@ -45,7 +45,7 @@ input {
 }
 button {
     background:var(--blue);
-    padding:1.75rem 4rem;
+    padding:1.75rem 3rem;
     margin-top:30px;
     font-size: 30px;
     border-radius:10px;
@@ -67,8 +67,15 @@ h3 {
 }
 footer {
     background-color:var(--brown);
-    margin:25px 0px 0px 0px;
+    margin:15px 0px 0px 0px;
     padding:1rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
 }
 footer h3 {
     font-size: 1.5rem;
