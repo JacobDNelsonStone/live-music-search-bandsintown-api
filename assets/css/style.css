@@ -1,6 +1,4 @@
-* {
-    margin:auto;
-}
+
 :root {
     --black:#000000;
     --blue:#262A56;
@@ -11,35 +9,50 @@
     --green:#367055;
 }
 body {
-    background-color:var(--biege);
-    /* margin:auto; */
+    background-color: var(--blue);
+    margin: 10px; 
+    font-family: 'Inter', sans-serif;
+    color:#000000
 }
-header {
+.container-header {
+    background-color: var(--brown);
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.header {
     background-color:var(--blue);
     padding:1rem;
-    border-bottom:2px solid var(--black);
-    margin-bottom:1rem;
-    /* margin:15; */
-    color:var(--brown);
+    border:5px solid var(--black);
+    color:var(--biege);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-family: 'Righteous', cursive;
 }
-/* header h3 {
-    padding:1rem;
-} */
+main{
+    background-color: var(--brown);
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
 .searchContainer {
-    border: 2px solid var(--black);
+    border: 5px solid var(--black);
     padding:3rem;
     max-width:1000px;
-    border-radius:30px;
-    background-color:#ffffff;
+    border-radius:10px;
+    background-color:#262A56;
     margin:auto;
     width:80%;
 }
 
 .textContainer {
-    border: 2px solid var(--black);
+    border: 5px solid var(--black);
     padding:10px;
     border-radius:10px;
-    background-color:red;
+    background-color:#E3CCAE;
     max-width:800px;
     margin:auto;
 }
@@ -57,7 +70,7 @@ button {
     margin-top:30px;
     font-size: 30px;
     border-radius:10px;
-    color: var(--white);
+    color: var(--biege);
 }
 button:hover{
     background-color: var(--hover);
@@ -66,34 +79,36 @@ button:hover{
 button:active {
     background-color: var(--green);
 }
-.popularArtistContainer {
-    border:2px solid var(--black);
+.previous-entry-container {
+    border:5px solid var(--black);
     max-width: 500px;
-    margin-top:30px;
+    margin-top:5px;
     border-radius:10px;
-    background-color: var(--white);
-    /* margin-bottom:1000px; */
+    background-color: var(--blue);
+    padding: 10px;
 }
-/* h3 {
-    padding:20px;
-} */
-footer {
-    background-color:var(--brown);
-    margin:1rem 0px 0px 0px;
-    padding:1rem;
-    /* position: fixed; */
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
-}
-footer h3 {
-    font-size: 1.5rem;
-    text-align: center;
+.previousEntry {
+    border:5px solid var(--black);
+    background-color: #E3CCAE;
+    border-radius:10px;
+    padding: 5px;
 }
 
+footer {
+    background-color: var(--brown);
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+  }
+  footer h3 {
+    font-size: 1.5rem;
+    font-family: 'Righteous', cursive;
+  }
+  
+a {
+    color:#262A56
+}
 @media screen and (max-width: 550px) {
     
 }
