@@ -145,6 +145,7 @@ if(qParam){
     venueAddressCard.append(dipslayVenueAddress(venue));
 
     venueAddressCard.append(displayVenueGoogleMap(venue));
+    venueAddressCard.append(displayVenueGoogleMapLink(venue));
     return venueAddressCard;
   }
 
@@ -199,6 +200,16 @@ if(qParam){
     venueGMapIframeEl.setAttribute("marginwidth", 0);
     venueGMapIframeEl.setAttribute("src","https://maps.google.com/maps?width=200&height=200&hl=en&q="+latCoord+","+lonCoord+"+("+venueName+")&t=&z=14&ie=UTF8&iwloc=B&output=embed");
     return venueGMapIframeEl;
+  }
+
+  function displayVenueGoogleMapLink(venue) {
+    var latCoord = venue["location"]["latitude"];
+    var lonCoord = venue["location"]["longitude"];
+    var venueGMapAEl = document.createElement("a");
+    venueGMapAEl.setAttribute("href","https://www.google.com/maps/search/?api=1&query="+latCoord+","+lonCoord);
+    venueGMapAEl.setAttribute("target","_blank");
+    venueGMapAEl.textContent = "View on Google Maps";
+    return venueGMapAEl;
   }
 
   // Populate page
