@@ -5,6 +5,8 @@ const qParam = urlParams.get('city');
 console.log(qParam);
 const searchResultsContainer = document.querySelector('#searchResults');
 var searchresultCardArray = []
+const searchQueryInfo = $('#searchQueryInfo');
+
 
 if(qParam){
   // CODE GOES HERE
@@ -16,6 +18,7 @@ if(qParam){
   url.searchParams.set("city", qParam);
   console.log(url.href);
 
+  searchQueryInfo.text(`Your Search: ${qParam}`);
   // Make API call
   fetch(url.href)
     .then(function (response) {
@@ -49,6 +52,7 @@ if(qParam){
   function parseEvent(event, saveEventButton) {
     console.log("===============================");
     console.log("EVENT:");
+    
     displayId(event);
     // displayName(event);
     // displayDates(event);
