@@ -10,6 +10,9 @@ const savedEventsContainer = document.querySelector('#savedEvents');
 var searchresultCardArray = []
 const searchQueryInfo = $('#searchQueryInfo');
 
+function setLocalStorage(){
+  
+}
 
 if(qParam){
   // CODE GOES HERE
@@ -164,6 +167,7 @@ if(qParam){
     displayVenueCoordinates(venue);
     var venueAddressCard = document.createElement('div');
     venueAddressCard.classList.add('saved');
+    venueAddressCard.classList.add('venue-info');
     venueAddressCard.append(dipslayVenueAddress(venue));
     venueAddressCard.append(displayVenueCityState(venue));
     // venueAddressCard.append(displayVenueState(venue));
@@ -254,11 +258,22 @@ if(qParam){
   }
 
   // Populate page
-  function savedEventRender(event){
+  function savedEventRender(array){
     var savedEventCard = document.createElement('div')
-    savedEventCard.append(displayName(event));
-    savedEventCard.append(displayDates(event));
-    savedEventCard.append(displayUrl(event));
+    var savedEventName = array[0];
+    var savedEventNameEl = document.createElement('h4')
+    savedEventNameEl.append(savedEventName);
+    var savedEventDate = array[1];
+    var savedEventDateEl = document.createElement('p');
+    var savedEventUrl = array[2];
+    var savedEventUrlEl = document.createElement('a');
+    savedEventUrlEl.setAttribute("href", savedEventUrl);
+    savedEventUrlEl.setAttribute("target", "_blank");
+    savedEventUrlEl.textContent = "View on Ticketmaster";
+    savedEventDateEl.append(savedEventDate);
+    savedEventCard.append(savedEventNameEl);
+    savedEventCard.append(savedEventDateEl);
+    savedEventCard.append(savedEventUrlEl);
     savedEventCard.classList.add('saved');
     savedEventsContainer.append(savedEventCard);
        
@@ -274,5 +289,11 @@ $(document).on('click', '.save-event-button', function(e){
   console.log(e.target.parentNode.children[0]);
   console.log(e.target.parentNode.children[2]);
   console.log(e.target.parentNode.children[5]);
+  var savedEventName = e.target.parentNode.children[0].textContent;
+  var savedEventDate = e.target.parentNode.children[2].textContent;
+  var savedEventUrl = e.target.parentNode.children[5].getAttribute('href');
+  var savedEventArray = [savedEventName, savedEventDate, savedEventUrl];
+  savedEventRender(savedEventArray);
+  return savedEventArray;
 
 })
