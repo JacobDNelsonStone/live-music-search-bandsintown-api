@@ -286,10 +286,14 @@ if(qParam){
     savedEventUrlEl.setAttribute("href", savedEventUrl);
     savedEventUrlEl.setAttribute("target", "_blank");
     savedEventUrlEl.textContent = "View on Ticketmaster";
+    var savedEventTrashEl = document.createElement('p');
+    savedEventTrashEl.textContent = "🗑️";
+    savedEventTrashEl.classList.add("delete-event-button");
     savedEventDateEl.append(savedEventDate);
     savedEventCard.append(savedEventNameEl);
     savedEventCard.append(savedEventDateEl);
     savedEventCard.append(savedEventUrlEl);
+    savedEventCard.append(savedEventTrashEl);
     savedEventCard.classList.add('saved');
     savedEventsContainer.append(savedEventCard);
        
@@ -318,4 +322,13 @@ $(document).on('click', '.save-event-button', function(e){
   }
   return savedEventArray;
 
+})
+
+$(document).on('click', '.delete-event-button', function(e){
+  e.preventDefault();
+  console.log(e.target);
+  var deleteEventId = e.target.parentNode.getAttribute("data-id");
+  delete savedEventStorage[deleteEventId];
+  setLocalStorage();
+  e.target.parentNode.remove();
 })
