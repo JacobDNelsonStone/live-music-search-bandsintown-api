@@ -143,6 +143,8 @@ if(qParam){
     var venueAddressCard = document.createElement('div');
     venueAddressCard.classList.add('saved');
     venueAddressCard.append(dipslayVenueAddress(venue));
+
+    venueAddressCard.append(displayVenueGoogleMap(venue));
     return venueAddressCard;
   }
 
@@ -181,6 +183,22 @@ if(qParam){
     var latCoord = venue["location"]["latitude"];
     var lonCoord = venue["location"]["longitude"];
     console.log(`${latCoord}, ${lonCoord}`);
+  }
+
+  // Modified from https://www.maps.ie/create-google-map/
+  function displayVenueGoogleMap(venue) {
+    var venueName = venue["name"];
+    var latCoord = venue["location"]["latitude"];
+    var lonCoord = venue["location"]["longitude"];
+    var venueGMapIframeEl = document.createElement("iframe");
+    venueGMapIframeEl.setAttribute("width", 200);
+    venueGMapIframeEl.setAttribute("height", 200);
+    venueGMapIframeEl.setAttribute("frameborder", 0);
+    venueGMapIframeEl.setAttribute("scrolling", "no");
+    venueGMapIframeEl.setAttribute("marginheight", 0);
+    venueGMapIframeEl.setAttribute("marginwidth", 0);
+    venueGMapIframeEl.setAttribute("src","https://maps.google.com/maps?width=200&height=200&hl=en&q="+latCoord+","+lonCoord+"+("+venueName+")&t=&z=14&ie=UTF8&iwloc=B&output=embed");
+    return venueGMapIframeEl;
   }
 
   // Populate page
