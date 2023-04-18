@@ -16,6 +16,7 @@ if(qParam){
   url.searchParams.set("apikey", apiKey);
   console.log(url.href);
   url.searchParams.set("city", qParam);
+  url.searchParams.set("sort", "date,asc");
   console.log(url.href);
 
   searchQueryInfo.text(`Your Search: ${qParam}`);
@@ -102,11 +103,15 @@ if(qParam){
   }
 
   function displayPriceRange(event) {
-    var currency = event["priceRanges"][0]["currency"];
-    var maxPrice = event["priceRanges"][0]["max"];
-    var minPrice = event["priceRanges"][0]["min"];
-    console.log(`${minPrice} ${currency} - ${maxPrice} ${currency}`);
-    var priceRange = `${minPrice} ${currency} - ${maxPrice} ${currency}`;
+    if (event["priceRanges"]){
+      var currency = event["priceRanges"][0]["currency"];
+      var maxPrice = event["priceRanges"][0]["max"];
+      var minPrice = event["priceRanges"][0]["min"];
+      console.log(`${minPrice} ${currency} - ${maxPrice} ${currency}`);
+      var priceRange = `${minPrice} ${currency} - ${maxPrice} ${currency}`;
+    } else {
+      var priceRange = "(no cost)";
+    }
     var priceRangeEl = document.createElement('p');
     priceRangeEl.append(priceRange);
     return priceRangeEl;
