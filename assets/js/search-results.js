@@ -28,7 +28,7 @@ if(qParam){
   getLocalStorage();
   var savedEventStorageIds = Object.keys(savedEventStorage);
   for(i=0;i<savedEventStorageIds.length;i++){
-    savedEventRender(savedEventStorage[savedEventStorageIds[i]]);
+    savedEventRender(savedEventStorageIds[i], savedEventStorage[savedEventStorageIds[i]]);
   }
 
   var url = new URL("https://app.ticketmaster.com/discovery/v2/events.json");
@@ -273,8 +273,9 @@ if(qParam){
   }
 
   // Populate page
-  function savedEventRender(array){
+  function savedEventRender(id, array){
     var savedEventCard = document.createElement('div')
+    savedEventCard.setAttribute("data-id", id);
     var savedEventName = array[0];
     var savedEventNameEl = document.createElement('h4')
     savedEventNameEl.append(savedEventName);
@@ -313,7 +314,7 @@ $(document).on('click', '.save-event-button', function(e){
   if(!savedEventStorage[savedEventId]){
     savedEventStorage[savedEventId] = savedEventArray;
     setLocalStorage();
-    savedEventRender(savedEventArray);
+    savedEventRender(savedEventId, savedEventArray);
   }
   return savedEventArray;
 
