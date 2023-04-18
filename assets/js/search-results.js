@@ -4,6 +4,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const qParam = urlParams.get('city');
 console.log(qParam);
 const searchResultsContainer = document.querySelector('#searchResults');
+const savedEventsContainer = document.querySelector('#savedEvents');
 var searchresultCardArray = []
 const searchQueryInfo = $('#searchQueryInfo');
 
@@ -61,7 +62,8 @@ if(qParam){
     // displayUrl(event);
     displayVenue(event["_embedded"]["venues"][0]);
     var searchResultCard = document.createElement('div');
-    searchResultCard.append(displayName(event, saveEventButton));
+    searchResultCard.append(displayName(event));
+    searchResultCard.append(saveEventButton);
     searchResultCard.append(displayDates(event));
     searchResultCard.append(displaySaleStatus(event));
     searchResultCard.append(displayPriceRange(event));
@@ -74,12 +76,11 @@ if(qParam){
     console.log(event["id"]);
   }
 
-  function displayName(event, saveEventButton) {
+  function displayName(event) {
     console.log(event["name"]);
     var eventName = event['name'];
     var eventNameEl = document.createElement('h4');
-    eventNameEl.append(eventName + `  `);
-    eventNameEl.append(saveEventButton)
+    eventNameEl.append(eventName);
     return eventNameEl;
   }
 
@@ -245,9 +246,14 @@ if(qParam){
   }
 
   // Populate page
-  function savedEventRender(){
-    
-    
+  function savedEventRender(event){
+    var savedEventCard = document.createElement('div')
+    savedEventCard.append(displayName(event));
+    savedEventCard.append(displayDates(event));
+    savedEventCard.append(displayUrl(event));
+    savedEventCard.classList.add('saved');
+    savedEventsContainer.append(savedEventCard);
+       
   }
 
 } else {
@@ -255,8 +261,10 @@ if(qParam){
 }
 
 
-$(document).on('click', '.save-event-button', function(event){
-  event.preventDefault();
-  console.log(event.target);
-  
+$(document).on('click', '.save-event-button', function(e){
+  e.preventDefault();
+  console.log(e.target.parentNode.children[0]);
+  console.log(e.target.parentNode.children[2]);
+  console.log(e.target.parentNode.children[5]);
+
 })
