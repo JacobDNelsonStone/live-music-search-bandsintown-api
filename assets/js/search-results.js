@@ -27,10 +27,16 @@ if(qParam){
       console.log(locRes["_embedded"]["events"]);
       var events= locRes["_embedded"]["events"];
       for(i=0;i<events.length;i++){
-        var searchResultCard = parseEvent(events[i]);
+        var saveEventButton = document.createElement('button');
+        saveEventButton.classList.add('btn');
+        saveEventButton.classList.add('save-event-button');
+        saveEventButton.textContent = 'Save Event';
+        console.log(saveEventButton)
+        var searchResultCard = parseEvent(events[i], saveEventButton);
 
         searchResultCard.classList.add('saved');
         searchResultsContainer.append(searchResultCard);
+        
 
       }
     })
@@ -40,7 +46,7 @@ if(qParam){
 
 
   // Parse result
-  function parseEvent(event) {
+  function parseEvent(event, saveEventButton) {
     console.log("===============================");
     console.log("EVENT:");
     displayId(event);
@@ -51,7 +57,7 @@ if(qParam){
     // displayUrl(event);
     displayVenue(event["_embedded"]["venues"][0]);
     var searchResultCard = document.createElement('div');
-    searchResultCard.append(displayName(event));
+    searchResultCard.append(displayName(event, saveEventButton));
     searchResultCard.append(displayDates(event));
     searchResultCard.append(displaySaleStatus(event));
     searchResultCard.append(displayPriceRange(event));
@@ -64,17 +70,18 @@ if(qParam){
     console.log(event["id"]);
   }
 
-  function displayName(event) {
+  function displayName(event, saveEventButton) {
     console.log(event["name"]);
     var eventName = event['name'];
     var eventNameEl = document.createElement('h4');
-    eventNameEl.append(eventName);
+    eventNameEl.append(eventName + `  `);
+    eventNameEl.append(saveEventButton)
     return eventNameEl;
   }
 
   function displayDates(event) {
     console.log(event["dates"]["start"]["dateTime"]);
-    var eventDate = event["dates"]["start"]["dateTime"];
+    var eventDate = dayjs(event["dates"]["start"]["dateTime"]).format('MMM D, YYYY');
     var eventDateEl = document.createElement('p');
     eventDateEl.append(eventDate);
     return eventDateEl;
@@ -135,17 +142,21 @@ if(qParam){
 
   function displayVenueFullAddress(venue) {
     // dipslayVenueAddress(venue);
-    displayVenueCity(venue);
-    displayVenueState(venue);
-    displayVenuePostalCode(venue);
-    displayVenueCountryCode(venue);
+    // displayVenueCity(venue);
+    // displayVenueState(venue);
+    // displayVenuePostalCode(venue);
+    // displayVenueCountryCode(venue);
     displayVenueCoordinates(venue);
     var venueAddressCard = document.createElement('div');
     venueAddressCard.classList.add('saved');
     venueAddressCard.append(dipslayVenueAddress(venue));
-
+    venueAddressCard.append(displayVenueCityState(venue));
+    // venueAddressCard.append(displayVenueState(venue));
+    venueAddressCard.append(displayVenuePostalCode(venue));
+    venueAddressCard.append(displayVenueCountryCode(venue));
     venueAddressCard.append(displayVenueGoogleMap(venue));
     venueAddressCard.append(displayVenueGoogleMapLink(venue));
+    
     return venueAddressCard;
   }
 
@@ -163,21 +174,36 @@ if(qParam){
     return venueAddressEl;
   }
 
-  function displayVenueCity(venue) {
+  function displayVenueCityState(venue) {
     console.log(venue["city"]["name"]);
-    // var venueCity = venue["city"]["name"];
+    var venueCity = venue["city"]["name"];
+    var venueState = venue["state"]["stateCode"];
+    var venueCityStateEl = document.createElement('p')
+    // var venueStateEl = document.createElement('p');
+    venueCityStateEl.append(venueCity + `, ${venueState}`);
+    return venueCityStateEl;
   }
 
   function displayVenueState(venue) {
     console.log(venue["state"]["stateCode"]);
+    
+    return venueStateEl;
   }
 
   function displayVenuePostalCode(venue) {
     console.log(venue["postalCode"]);
+    var venueZipCode = venue["postalCode"];
+    var venueZipCodeEl = document.createElement('p');
+    venueZipCodeEl.append(venueZipCode);
+    return venueZipCodeEl;
   }
 
   function displayVenueCountryCode(venue) {
     console.log(venue["country"]["countryCode"]);
+    var venueCountry = venue["country"]["countryCode"];
+    var venueCountryEl = document.createElement('p');
+    venueCountryEl.append(venueCountry);
+    return venueCountryEl;
   }
 
   function displayVenueCoordinates(venue) {
@@ -213,7 +239,7 @@ if(qParam){
   }
 
   // Populate page
-  function renderResults(){
+  function savedEventRender(){
     
     
   }
@@ -221,3 +247,10 @@ if(qParam){
 } else {
   alert("You must provide a search query.");
 }
+
+
+$(document).on('click', '.save-event-button', function(event){
+  event.preventDefault();
+  console.log(event.target);
+  
+})
