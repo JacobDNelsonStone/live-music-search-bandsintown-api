@@ -74,7 +74,7 @@ if(qParam){
 
   function displayDates(event) {
     console.log(event["dates"]["start"]["dateTime"]);
-    var eventDate = event["dates"]["start"]["dateTime"];
+    var eventDate = dayjs(event["dates"]["start"]["dateTime"]).format('MMM D, YYYY');
     var eventDateEl = document.createElement('p');
     eventDateEl.append(eventDate);
     return eventDateEl;
@@ -135,15 +135,18 @@ if(qParam){
 
   function displayVenueFullAddress(venue) {
     // dipslayVenueAddress(venue);
-    displayVenueCity(venue);
-    displayVenueState(venue);
-    displayVenuePostalCode(venue);
-    displayVenueCountryCode(venue);
+    // displayVenueCity(venue);
+    // displayVenueState(venue);
+    // displayVenuePostalCode(venue);
+    // displayVenueCountryCode(venue);
     displayVenueCoordinates(venue);
     var venueAddressCard = document.createElement('div');
     venueAddressCard.classList.add('saved');
     venueAddressCard.append(dipslayVenueAddress(venue));
-
+    venueAddressCard.append(displayVenueCityState(venue));
+    // venueAddressCard.append(displayVenueState(venue));
+    venueAddressCard.append(displayVenuePostalCode(venue));
+    venueAddressCard.append(displayVenueCountryCode(venue));
     venueAddressCard.append(displayVenueGoogleMap(venue));
     venueAddressCard.append(displayVenueGoogleMapLink(venue));
     return venueAddressCard;
@@ -163,21 +166,36 @@ if(qParam){
     return venueAddressEl;
   }
 
-  function displayVenueCity(venue) {
+  function displayVenueCityState(venue) {
     console.log(venue["city"]["name"]);
-    // var venueCity = venue["city"]["name"];
+    var venueCity = venue["city"]["name"];
+    var venueState = venue["state"]["stateCode"];
+    var venueCityStateEl = document.createElement('p')
+    // var venueStateEl = document.createElement('p');
+    venueCityStateEl.append(venueCity + `, ${venueState}`);
+    return venueCityStateEl;
   }
 
   function displayVenueState(venue) {
     console.log(venue["state"]["stateCode"]);
+    
+    return venueStateEl;
   }
 
   function displayVenuePostalCode(venue) {
     console.log(venue["postalCode"]);
+    var venueZipCode = venue["postalCode"];
+    var venueZipCodeEl = document.createElement('p');
+    venueZipCodeEl.append(venueZipCode);
+    return venueZipCodeEl;
   }
 
   function displayVenueCountryCode(venue) {
     console.log(venue["country"]["countryCode"]);
+    var venueCountry = venue["country"]["countryCode"];
+    var venueCountryEl = document.createElement('p');
+    venueCountryEl.append(venueCountry);
+    return venueCountryEl;
   }
 
   function displayVenueCoordinates(venue) {
@@ -213,7 +231,7 @@ if(qParam){
   }
 
   // Populate page
-  function renderResults(){
+  function savedEventRender(){
     
     
   }
