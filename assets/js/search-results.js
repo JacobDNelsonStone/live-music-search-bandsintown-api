@@ -111,8 +111,10 @@ if(qParam){
   function displayUrl(event) {
     console.log(event["url"]);
     var eventURL = event["url"];
-    var eventURLEl = document.createElement('p');
-    eventURLEl.append(eventURL);
+    var eventURLEl = document.createElement('a');
+    eventURLEl.setAttribute("href", eventURL);
+    eventURLEl.setAttribute("target", "_blank");
+    eventURLEl.textContent = "View on Ticketmaster";
     return eventURLEl;
   }
 
