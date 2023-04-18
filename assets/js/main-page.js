@@ -1,5 +1,6 @@
 
-
+$('#sandbox-container .input-daterange').datepicker({});
+$('.datepicker').datepicker();
 
 var searchButton = document.querySelector('#searchbutton');
 
