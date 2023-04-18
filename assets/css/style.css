@@ -77,7 +77,7 @@ button:hover{
     /* font-weight: 600; */
 }
 button:active {
-    background-color: var(--green);
+    background-color: var(--brown);
 }
 .previous-entry-container {
     border:5px solid var(--black);
