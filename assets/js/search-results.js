@@ -2,6 +2,8 @@
 const apiKey = "X38h4l2eRNCHRxrc62dZS33WZp8kovpQ";
 const urlParams = new URLSearchParams(window.location.search);
 const qParam = urlParams.get('city');
+const startDateParam = "*"; // "YYYY-MM-DDT00:00:00"
+const endDateParam = "*"; // "YYYY-MM-DDT23:59:59"
 console.log(qParam);
 const searchResultsContainer = document.querySelector('#searchResults');
 var searchresultCardArray = []
@@ -17,6 +19,7 @@ if(qParam){
   console.log(url.href);
   url.searchParams.set("city", qParam);
   url.searchParams.set("sort", "date,asc");
+  url.searchParams.set("localStartEndDateTime", `${startDateParam},${endDateParam}`);
   console.log(url.href);
 
   searchQueryInfo.text(`Your Search: ${qParam}`);
