@@ -112,7 +112,9 @@ footer h3 {
   font-family: 'Righteous', cursive;
 }
 
-
+.save-event-button {
+  padding: 1px;
+}
 
 @media screen and (max-width: 550px) {
 .main {flex-direction: column;
