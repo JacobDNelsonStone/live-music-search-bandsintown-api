@@ -2,8 +2,14 @@
 const apiKey = "X38h4l2eRNCHRxrc62dZS33WZp8kovpQ";
 const urlParams = new URLSearchParams(window.location.search);
 const qParam = urlParams.get('city');
-const startDateParam = "*"; // "YYYY-MM-DDT00:00:00"
-const endDateParam = "*"; // "YYYY-MM-DDT23:59:59"
+var startDateParam = "*"; // "YYYY-MM-DDT00:00:00"
+var endDateParam = "*"; // "YYYY-MM-DDT23:59:59"
+if (urlParams.get('startDateTime')){
+  startDateParam = urlParams.get('startDateTime') + "T00:00:00";
+}
+if (urlParams.get('endDateTime')){
+  endDateParam = urlParams.get('endDateTime') + "T23:59:59";
+}
 console.log(qParam);
 const searchResultsContainer = document.querySelector('#searchResults');
 const savedEventsContainer = document.querySelector('#savedEvents');
