@@ -41,7 +41,7 @@ main{
 .searchContainer {
     border: 5px solid var(--black);
     padding:3rem;
-    max-width:1000px;
+    /* max-width:1000px; */
     border-radius:10px;
     background-color:#262A56;
     margin:auto;
