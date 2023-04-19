@@ -35,22 +35,13 @@
     <main><center>
         <div class="searchContainer">
             <div class="textContainer">
-                <input type="text" id="text" placeholder="City">
-                <!-- <select name="dropdown" class="dropdown-item"  id="eventTiming" >Select Date</select>      -->
-                <div class="input-daterange input-group" id="datepicker">
-                    <input type="text" class="input-sm form-control" name="start" placeholder="Start Date mm/dd/yyyy"/>
+                <input class="d-block" id="searchField" type="text" id="text" placeholder="City">
+                
+                <input id="startDate" type="date" id="text" placeholder="Start Date">
                     <span class="input-group-addon">to</span>
-                    <input type="text" class="input-sm form-control" name="end" placeholder="End Date mm/dd/yyyy" />
+                <input id="endDate" type="date" id="text" placeholder="End Date">   
                 </div>
                 <button id="searchButton">Search</button>
-            </div>
-        </div>
-
-        <div class="previous-entry-container">
-            <div class="previousEntry">
-                <h3 >Previous Search</h3>
-                <p class="city">City:</p>
-                <p class="dateRange">Date:</p>
             </div>
         </div>
     </center></main>
