@@ -7,15 +7,29 @@ const endDateParam = "*"; // "YYYY-MM-DDT23:59:59"
 console.log(qParam);
 const searchResultsContainer = document.querySelector('#searchResults');
 const savedEventsContainer = document.querySelector('#savedEvents');
-var searchresultCardArray = []
+// var searchresultCardArray = []
+var savedEventStorage = {};
 const searchQueryInfo = $('#searchQueryInfo');
 
+function getLocalStorage(){
+  var storedEventsJson = localStorage.getItem("live-events-search-tm");
+  if (storedEventsJson) {
+    savedEventStorage = JSON.parse(storedEventsJson);
+  }
+}
+
 function setLocalStorage(){
-  
+  var storedEventsJson = JSON.stringify(savedEventStorage);
+  localStorage.setItem("live-events-search-tm", storedEventsJson);
 }
 
 if(qParam){
   // CODE GOES HERE
+  getLocalStorage();
+  var savedEventStorageIds = Object.keys(savedEventStorage);
+  for(i=0;i<savedEventStorageIds.length;i++){
+    savedEventRender(savedEventStorageIds[i], savedEventStorage[savedEventStorageIds[i]]);
+  }
 
   var url = new URL("https://app.ticketmaster.com/discovery/v2/events.json");
   console.log(url.href);
@@ -69,6 +83,7 @@ if(qParam){
     // displayUrl(event);
     displayVenue(event["_embedded"]["venues"][0]);
     var searchResultCard = document.createElement('div');
+    searchResultCard.setAttribute("data-id",event["id"]);
     searchResultCard.append(displayName(event));
     searchResultCard.append(saveEventButton);
     searchResultCard.append(displayDates(event));
@@ -258,8 +273,9 @@ if(qParam){
   }
 
   // Populate page
-  function savedEventRender(array){
+  function savedEventRender(id, array){
     var savedEventCard = document.createElement('div')
+    savedEventCard.setAttribute("data-id", id);
     var savedEventName = array[0];
     var savedEventNameEl = document.createElement('h4')
     savedEventNameEl.append(savedEventName);
@@ -270,10 +286,14 @@ if(qParam){
     savedEventUrlEl.setAttribute("href", savedEventUrl);
     savedEventUrlEl.setAttribute("target", "_blank");
     savedEventUrlEl.textContent = "View on Ticketmaster";
+    var savedEventTrashEl = document.createElement('p');
+    savedEventTrashEl.textContent = "🗑️";
+    savedEventTrashEl.classList.add("delete-event-button");
     savedEventDateEl.append(savedEventDate);
     savedEventCard.append(savedEventNameEl);
     savedEventCard.append(savedEventDateEl);
     savedEventCard.append(savedEventUrlEl);
+    savedEventCard.append(savedEventTrashEl);
     savedEventCard.classList.add('saved');
     savedEventsContainer.append(savedEventCard);
        
@@ -289,11 +309,26 @@ $(document).on('click', '.save-event-button', function(e){
   console.log(e.target.parentNode.children[0]);
   console.log(e.target.parentNode.children[2]);
   console.log(e.target.parentNode.children[5]);
+  var savedEventId = e.target.parentNode.getAttribute("data-id");
+  console.log(savedEventId);
   var savedEventName = e.target.parentNode.children[0].textContent;
   var savedEventDate = e.target.parentNode.children[2].textContent;
   var savedEventUrl = e.target.parentNode.children[5].getAttribute('href');
   var savedEventArray = [savedEventName, savedEventDate, savedEventUrl];
-  savedEventRender(savedEventArray);
+  if(!savedEventStorage[savedEventId]){
+    savedEventStorage[savedEventId] = savedEventArray;
+    setLocalStorage();
+    savedEventRender(savedEventId, savedEventArray);
+  }
   return savedEventArray;
 
+})
+
+$(document).on('click', '.delete-event-button', function(e){
+  e.preventDefault();
+  console.log(e.target);
+  var deleteEventId = e.target.parentNode.getAttribute("data-id");
+  delete savedEventStorage[deleteEventId];
+  setLocalStorage();
+  e.target.parentNode.remove();
 })
