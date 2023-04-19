@@ -6,6 +6,7 @@ Welcome to our repository for group project 1! We have created a web application
 ![Here is a screenshot of the search page](./assets/images/mainscreenshot.png)
 
 ![Here is a screenshot of the result page](./assets/images/resultscreenshot.png)
+
 ## Live page
 Open [https://jacobdnelsonstone.github.io/live-music-search-ticketmaster-api/](https://jacobdnelsonstone.github.io/live-music-search-ticketmaster-api/) with your browser to see the result.
 ## Creators
